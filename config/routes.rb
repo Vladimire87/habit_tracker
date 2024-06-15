@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  resources :habits
-  get 'home/index'
   devise_for :users
-  get "up" => "rails/health#show", as: :rails_health_check
+
+  resources :habits do
+    resources :progresses
+  end
+
+  
+
   root "home#index"
+
+  get "up" => "rails/health#show", as: :rails_health_check
 end
